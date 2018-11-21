@@ -5,12 +5,25 @@
   * **Apartado 2.** Tenemos 1 parámetro:
     * Tenemos un único Parámetro `año`, de tipo *int*. Este será el año que queremos comprobar si es bisiesto o no.
   * **Apartado 3.** Tendremos 3 caracterizaciones:
-    * C1: año negativo.
-    * C2: año positivo.
-    * C3: año 0.
-  * **Apartado 4.**
-    * Teniendo en cuenta criterio AcoC (saldrán 2^3 combinaciones):
-    * C1:
+    * C1: año respecto del 0.
+      * b1: año negativo
+      * b2: año 0
+      * b3: año positivo
+    * C2: año múltiplo de 4.
+      * b1: True
+      * b2: False
+    * C3: año múltiplo de 100.
+      * b1: True
+      * b2: False
+    * C4: año múltiplo de 400.
+      * b1: True
+      * b2: False
+
+  * **Apartado 4.** Valores adecuados a cada bloque según criterios de cobertura:
+    * C1: -200 | 0 | 2018
+    * C2: 4 | 5
+    * C3: 100 | 101
+    * C4: 400 | 401
 
 ---
 

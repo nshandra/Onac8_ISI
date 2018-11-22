@@ -10,22 +10,6 @@ import java.util.*;
 public class EmbotelladoraTest
 {
 
-	// // Test con precio entero (0 céntimos)
-	// @Test
-	// public void testForZeroDecimal ()
-	// {
-	// 	assertTrue("testForZeroDecimal_Error",		// Se imprimirá este msg si test falla
-	// 		42.0 == DescuentoBlackFriday.PrecioFinal(60.0));
-	// }
-	//
-	// //Test con precio orignal decimal (céntimos != 0)
-	// @Test
-	// public void testForDecimal()
-	// {
-	// 	assertTrue("testForDecimal_Error",		// Se imprimirá este msg si test falla
-	// 		41.93 == DescuentoBlackFriday.PrecioFinal(59.90));
-	// }
-
 	//Test con botellas pequenas negativas
 	@Test (expected = IllegalArgumentException.class) // Este test decora la anotación @Test con la clase de la excepción esperada.
 	public void testForNegativePequenas()
@@ -54,17 +38,59 @@ public class EmbotelladoraTest
 		Embotelladora.calculaBotellasPequenas(0,0,10);
 	}
 
-	// Test con precio original válido
+
 	@Test
-	public void testForValidCombination()
+	public void testForSoloPequeñas()
 	{
-		assertTrue("testForValidCombination_Error", 2 == Embotelladora.calculaBotellasPequenas(10,1,7));
+		assertTrue("testForSoloPequeñas_Error", 5 == Embotelladora.calculaBotellasPequenas(5,0,5));
 	}
 
-	// Test con precio original válido
+
 	@Test
-	public void testForInvalidCombination()
+	public void testForSoloGrandes()
 	{
-		assertTrue("testForInvalidCombination_Error", -1 == Embotelladora.calculaBotellasPequenas(1,1,7));
+		assertTrue("testForSoloGrandes_Error", 0 == Embotelladora.calculaBotellasPequenas(0,2,10));
+	}
+
+
+	@Test
+	public void testForAmbasBotellas()
+	{
+		assertTrue("testForAmbasBotellas_Error", 4 == Embotelladora.calculaBotellasPequenas(5,2,14));
+	}
+
+
+	@Test
+	public void testForIgualCantidad()
+	{
+		assertTrue("testForIgualCantidad_Error", 2 == Embotelladora.calculaBotellasPequenas(2,2,12));
+	}
+
+
+	@Test
+	public void testForMasPequenas()
+	{
+		assertTrue("testForMasPequenas_Error", 2 == Embotelladora.calculaBotellasPequenas(8,4,22));
+	}
+
+
+	@Test
+	public void testForAbastecemosJustas()
+	{
+		assertTrue("testForAbastecemosJustas_Error", 6 == Embotelladora.calculaBotellasPequenas(6,2,16));
+	}
+
+
+	@Test
+	public void testForNoAbastecemos()
+	{
+		assertTrue("testForNoAbastecemos_Error", -1 == Embotelladora.calculaBotellasPequenas(1,2,14));
+	}
+
+
+	@Test
+	public void testForAbastacemosSobra()
+	{
+		assertTrue("testForAbastacemosSobra_Error", 2 == Embotelladora.calculaBotellasPequenas(10,1,7));
 	}
 }

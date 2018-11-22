@@ -34,7 +34,9 @@
     * C1: null (string vacío).
     * C2: string que sea romano.
     * C3: string que NO sea romano.
-  * **Apartado 4.**
+  * **Apartado 4.** Valores adecuados a cada bloque según criterios de cobertura:
+    * C1: string vacío | XVII | HJK / MMJ / IIIII
+
 
 ---
 
@@ -44,20 +46,41 @@
     * `pequeñas`: tipo int. Será el número de botellas de 1 litro disponibles en el almacén.
     * `grande`: tipo int. Será el número de botellas de 5 litros disponibles en el almacén.
     * `total`: tipo int. Número total de litros que queremos embotellar.
-  * **Apartado 3.**  Tendremos en esta ocasión 5 caracterizaciones:
-    * C1: no botellas disponibles de ningún tamaño.
-    * C2: sólo botellas pequeñas disponibles.
-    * C3: sólo botellas grandes disponibles.
-    * C4: mayor número de botellas grandes que pequeñas.
-    * C5: mayor número de botellas pequeñas que grandes.
+  * **Apartado 3.**  Tendremos en esta ocasión 3 caracterizaciones:
+    * C1: Cantidad de botellas.
+      * b1: ninguna (pequeñas y grandes son 0).
+      * b2: solo pequeñas disponibles.
+      * b3: solo grandes disponibles.
+      * b4: ambas disponibles.
+      * b5: pequeñas negativas.
+      * b6: grandes negativas.
+    * C2: Mayor cantidad de botellas.
+      * b1: misma cantidad pequeñas que grandes
+      * b2: mayor cantidad de pequeñas que de grandes
+      * b3: mayor cantidad de grandes que de pequeñas
+    * C3: Litros totales con respecto al 0.
+      * b1: litros negativos
+      * b2: litros 0
+      * b3: litros positivos
+    * C4: Abastecimiento dado litros totales y botellas
+      * b1: abastecemos con botellas justas
+      * b2: no abastecemos
+      * b3: abastecemos y nos sobran botellas
   * **Apartado 4.**
+    * C1: 0,0,10 | 10,0,10 | 0,10,10 | 1,2,10 | -1,2,10 | 1,-2,10
+    * C2: 3,3,8 | 3,1,8 | 1,3,8
+    * C3: 10,0,-10 | 10,0,0 | 10,10,10
+    * C4: 0,2,10 | 2,0,10 | 5,2,13
 
 ---
 
 ### Ejercicio 4 - Descuento Black Friday
   * **Apartado 1.** Se analizará la clase `DescuentoBlackFriday`, la cual contiene un método llamado `PrecioFinal`, que devuelve un precio final un 30% menor que el precio original proporcionado, en el caso de que el día actual sea 23 de noviembre.
   * **Apartado 2.** Un único parámetro `precioOriginal` de tipo *double*. Será el precio original de un producto marcado en su etiqueta, sin descuento.
-  * **Apartado 3.** Hay 2 caracterizaciones:
-    * C1: precio original de producto que se va a rebajar.
-    * C2: precio original de producto que no se va a rebajar.
-  * **Apartado 4.**
+  * **Apartado 3.** Hay 1 caracterización:
+    * C1: precio original respecto del 0:
+      * b1: precio negativo
+      * b2: precio 0
+      * b3: precio positivo
+  * **Apartado 4.** Da valores adecuados a cada bloque según criterios de cobertura:
+    * C1: -2.0 | 0.0 | 25.50

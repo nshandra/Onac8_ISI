@@ -18,7 +18,7 @@ public class Embotelladora {
     }
 
     if (pequenas == 0){ //tiene que haber grandes si o si
-      if (total/5 < grandes){ //p.e. 30l, 6g | 32l, 7 g
+      if (total/5 <= grandes){ //p.e. 30l, 6g | 32l, 7 g
         int num_grandes = Math.round (total/5); //no nos hace falta, pero lo guardo
         return 0;
       }else{
@@ -39,11 +39,11 @@ public class Embotelladora {
     }
 
     //caso grandes > pequeñas | pequeñas > grandes
-    if (total/5 < grandes){ //p.e. 30l, 6g | 32l, 7 g
+    int resto = total - (5*grandes);
+    if (resto <= 0){ //p.e. 30l, 6g | 32l, 7 g
       int num_grandes = Math.round (total/5); //no nos hace falta, pero lo guardo
       return 0;
-    }else{
-      int resto = total % 5; //el sobrante, para rellenar con pequenas
+    }else{ //el sobrante, para rellenar con pequenas
       if (pequenas >= resto){
         return resto;
       }else{

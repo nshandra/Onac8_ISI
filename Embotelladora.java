@@ -1,4 +1,5 @@
 //package sut_code;
+import java.lang.Math;
 
 public class Embotelladora {
 
@@ -17,31 +18,61 @@ public class Embotelladora {
     }
 
     if (pequenas == 0){ //tiene que haber grandes si o si
-      if (total % grandes == 0){
-        return 0; //necesitamos 0 pequeñas
-      else{
-        throw algo; //no rellenamos todos los litros solo con las grandes
+      if (total/5 < grandes){ //p.e. 30l, 6g | 32l, 7 g
+        int num_grandes = Math.round (total/5); //no nos hace falta, pero lo guardo
+        return 0;
+      }else{
+        return -1;
+        // throw new IllegalArgumentException("Embotelladora.calculaBotellasPequenas");
+        //no podemos rellenar todos los litros solo con las grandes
       }
     }
 
     if (grandes == 0){ //tiene que haber pequeñas si o si
-      if (total % pequenas == 0){
-        return total/pequenas;
+      if (pequenas >= total){ //p.e. 10l 12 peq
+        return total;
       }else{
-        throw algo; //no rellenamos todos los litros solo con las pequeñas
+        return -1;
+        // throw new IllegalArgumentException("Embotelladora.calculaBotellasPequenas");
+        //no rellenamos todos los litros solo con las pequeñas
       }
     }
 
     //caso grandes > pequeñas | pequeñas > grandes
-    if (total % grandes == 0){
+    if (total/5 < grandes){ //p.e. 30l, 6g | 32l, 7 g
+      int num_grandes = Math.round (total/5); //no nos hace falta, pero lo guardo
       return 0;
     }else{
-      double resto = total % grandes;
-      if (resto % pequenas == 0){
-        return resto/pequenas;
+      int resto = total % 5; //el sobrante, para rellenar con pequenas
+      if (pequenas >= resto){
+        return resto;
       }else{
-        throw algo; //no rellenamos todos los litros con grandes+peq
+        return -1;
+        // throw new IllegalArgumentException("Embotelladora.calculaBotellasPequenas");
+        //no rellenamos todos los litros con grandes+peq
       }
     }
+  }
+
+  public static void main (String args[]){
+    Embotelladora test = new Embotelladora();
+    // System.out.println(test.calculaBotellasPequenas(-10,10,10)); //ERROR
+    // System.out.println(test.calculaBotellasPequenas(10,-10,10)); //ERROR
+    // System.out.println(test.calculaBotellasPequenas(10,10,0)); //ERROR
+    // System.out.println(test.calculaBotellasPequenas(0,0,10)); //ERROR
+
+    System.out.println(test.calculaBotellasPequenas(0,10,20)); //OK 0 bot
+    System.out.println(test.calculaBotellasPequenas(0,10,22)); //OK 0 bot
+    // System.out.println(test.calculaBotellasPequenas(0,3,15)); //NO OK
+
+    System.out.println(test.calculaBotellasPequenas(10,0,10)); //OK 10 bot
+    System.out.println(test.calculaBotellasPequenas(10,0,5)); //OK 5 bot
+    // System.out.println(test.calculaBotellasPequenas(10,0,12)); //NO OK
+
+    System.out.println(test.calculaBotellasPequenas(10,10,10)); //OK 0 bot
+    System.out.println(test.calculaBotellasPequenas(10,2,10)); //OK 0 bot
+    System.out.println(test.calculaBotellasPequenas(10,1,7)); //OK 2 bot
+    // System.out.println(test.calculaBotellasPequenas(1,1,7)); //NO OK
+
   }
 }

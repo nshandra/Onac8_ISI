@@ -1,0 +1,10 @@
+Embotelladora:
+Se ha modificado la excepcion de parametros negativos por return -1 para que sea posible realizar data driven test. total = 0 y (pequenas == 0 && grandes == 0) se considera como parametro invalido, se ha modificado el test en consecuencia.
+
+Linea 21: if (total/5 <= grandes) no tiene en cuenta el resto de total.
+
+Versión original:
+https://github.com/nshandra/Onac8_ISI/blob/master/Embotelladora-orig.java
+
+Versión corregida:
+https://github.com/nshandra/Onac8_ISI/blob/master/Embotelladora.java
